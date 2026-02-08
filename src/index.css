@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Aluggou Brand Colors */
+    --primary: 217 91% 53%; /* #2563EB - Azul Vivo */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 345 84% 55%; /* #EA2B53 - Vermelho Vivo */
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Cores de apoio */
+    --accent: 220 81% 69%; /* #709EEF - Azul Opaco */
+    --accent-foreground: 220 100% 32%;
+    
+    --muted: 220 60% 96%; /* Light blue-gray */
+    --muted-foreground: 220 20% 40%;
+    
+    /* Neutros */
+    --background: 220 60% 97%; /* #F1F5FD */
+    --foreground: 220 40% 14%; /* #151D30 */
+    
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 220 40% 14%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 14%;
+    
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 217 91% 53%;
+    
+    --destructive: 345 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Extras Aluggou */
+    --blue-dark: 240 97% 32%; /* #05059E */
+    --red-light: 345 84% 70%; /* #F46E91 */
+    --red-dark: 345 88% 31%; /* #93092E */
+    
+    --radius: 0.75rem;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 40% 8%;
+    --foreground: 220 20% 95%;
+    
+    --card: 220 40% 12%;
+    --card-foreground: 220 20% 95%;
+    
+    --popover: 220 40% 12%;
+    --popover-foreground: 220 20% 95%;
+    
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 345 84% 60%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 20% 65%;
+    
+    --accent: 220 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 217 91% 60%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+  
+  .bg-gradient-primary {
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+  
+  .bg-gradient-cta {
+    background-image: linear-gradient(135deg, hsl(var(--secondary)), hsl(345 84% 45%));
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.3);
+  }
+  
+  .shadow-glow-secondary {
+    box-shadow: 0 0 40px hsl(var(--secondary) / 0.3);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
