@@ -74,14 +74,21 @@ const Header = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile CTA + Menu Button */}
+        <div className="md:hidden flex items-center gap-2">
+          <Button variant="default" size="sm" asChild>
+            <a href="https://app.aluggou.com/signup?source=site" target="_blank" rel="noopener noreferrer">
+              Testar Grátis
+            </a>
+          </Button>
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

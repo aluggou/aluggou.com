@@ -47,11 +47,11 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" style={{ gridAutoRows: '1fr' }}>
           {steps.map((step, index) => (
             <div
               key={step.number}
-              className="relative group animate-fade-in"
+              className="relative group animate-fade-in h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Connector line */}
@@ -59,7 +59,7 @@ const HowItWorks = () => {
                 <div className="hidden lg:block absolute top-[3.25rem] right-0 translate-x-full w-8 h-[2px] bg-primary-foreground/40" />
               )}
 
-              <div className="relative text-center p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/30 hover:bg-primary-foreground/20 hover:border-primary-foreground/50 transition-all duration-300 group-hover:-translate-y-1">
+              <div className="relative text-center p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/30 hover:bg-primary-foreground/20 hover:border-primary-foreground/50 transition-all duration-300 group-hover:-translate-y-1 h-full flex flex-col min-h-[280px]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-14 h-14 bg-primary-foreground/20 rounded-xl flex items-center justify-center">
                     <step.icon className="text-primary-foreground" size={28} />
@@ -69,7 +69,7 @@ const HowItWorks = () => {
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-primary-foreground mb-3 text-left">{step.title}</h3>
-                <p className="text-primary-foreground/80 text-left">{step.description}</p>
+                <p className="text-primary-foreground/80 text-left flex-grow">{step.description}</p>
               </div>
             </div>
           ))}

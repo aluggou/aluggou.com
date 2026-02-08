@@ -83,10 +83,10 @@ const Hero = () => {
                     { label: "Entregas Hoje", value: "8", color: "bg-secondary" },
                     { label: "Faturamento", value: "R$ 12.450", color: "bg-accent" },
                   ].map((stat) => (
-                    <div key={stat.label} className="bg-card p-4 rounded-lg border border-border">
-                      <div className={`w-10 h-10 ${stat.color} rounded-lg mb-3 opacity-20`} />
-                      <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    <div key={stat.label} className="bg-card p-2 md:p-4 rounded-lg border border-border overflow-hidden">
+                      <div className={`w-8 h-8 md:w-10 md:h-10 ${stat.color} rounded-lg mb-2 md:mb-3 opacity-20`} />
+                      <p className="text-base md:text-2xl font-bold text-foreground truncate">{stat.value}</p>
+                      <p className="text-xs md:text-sm text-muted-foreground truncate">{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -116,7 +116,7 @@ const Hero = () => {
             </div>
 
             {/* Floating elements */}
-            <div className="absolute -top-4 -right-4 bg-card rounded-xl shadow-lg p-4 border border-border animate-float">
+            <div className="absolute -top-12 -right-4 bg-card rounded-xl shadow-lg p-4 border border-border animate-float">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
                   <CheckCircle className="text-green-500" size={20} />

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2, Sparkles } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -29,27 +28,24 @@ const Newsletter = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.from("newsletter_subscribers").insert({
-        email: email.trim(),
+      await fetch('https://webhook.aluggou.com/webhook/newslatter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          timestamp: new Date().toISOString(),
+        }),
       });
 
-      if (error) {
-        if (error.code === "23505") {
-          toast({
-            title: "Email já cadastrado",
-            description: "Este email já está em nossa lista.",
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        toast({
-          title: "Inscrição confirmada!",
-          description: "Você receberá nossas novidades em breve.",
-        });
-        setEmail("");
-      }
+      toast({
+        title: "Inscrição confirmada!",
+        description: "Você receberá nossas novidades em breve.",
+      });
+      setEmail("");
     } catch (error) {
+      console.error('Erro ao enviar para webhook:', error);
       toast({
         title: "Erro ao inscrever",
         description: "Tente novamente em alguns instantes.",
