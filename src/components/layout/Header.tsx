@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import ContactPopup from "@/components/ui/ContactPopup";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,22 +21,25 @@ const Header = () => {
     { href: "#como-funciona", label: "Como Funciona" },
     { href: "#funcionalidades", label: "Funcionalidades" },
     { href: "#planos", label: "Planos" },
-    { href: "#faq", label: "FAQ" },
+    { href: "#sobre", label: "Sobre Nós" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-md py-3"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-card/95 backdrop-blur-md shadow-md py-3"
+        : "bg-transparent py-5"
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-primary">Aluggou</span>
-        </a>
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/brand/logotipo-aluggou.svg"
+            alt="Aluggou"
+            className="h-12 md:h-16"
+          />
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
@@ -46,15 +52,25 @@ const Header = () => {
               {link.label}
             </a>
           ))}
+          <button
+            onClick={() => setIsContactPopupOpen(true)}
+            className="text-foreground/80 hover:text-primary font-medium transition-colors"
+          >
+            Contato
+          </button>
         </nav>
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="outline" size="sm">
-            Entrar
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://app.aluggou.com" target="_blank" rel="noopener noreferrer">
+              Entrar
+            </a>
           </Button>
-          <Button variant="cta" size="sm">
-            Testar Grátis
+          <Button variant="default" size="sm" asChild>
+            <a href="https://app.aluggou.com/signup?source=site" target="_blank" rel="noopener noreferrer">
+              Testar Grátis
+            </a>
           </Button>
         </div>
 
@@ -82,17 +98,35 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
+            <button
+              className="text-foreground/80 hover:text-primary font-medium py-2 text-left"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsContactPopupOpen(true);
+              }}
+            >
+              Contato
+            </button>
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
-              <Button variant="outline" className="w-full">
-                Entrar
+              <Button variant="outline" className="w-full" asChild>
+                <a href="https://app.aluggou.com" target="_blank" rel="noopener noreferrer">
+                  Entrar
+                </a>
               </Button>
-              <Button variant="cta" className="w-full">
-                Testar Grátis
+              <Button variant="default" className="w-full" asChild>
+                <a href="https://app.aluggou.com/signup?source=site" target="_blank" rel="noopener noreferrer">
+                  Testar Grátis
+                </a>
               </Button>
             </div>
           </nav>
         </div>
       )}
+      {/* Contact Popup */}
+      <ContactPopup
+        isOpen={isContactPopupOpen}
+        onClose={() => setIsContactPopupOpen(false)}
+      />
     </header>
   );
 };

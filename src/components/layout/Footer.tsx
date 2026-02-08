@@ -10,7 +10,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-card mb-4">Aluggou</h3>
+            <Link to="/">
+              <img
+                src="/brand/logotipo-aluggou.svg"
+                alt="Aluggou"
+                className="h-15 mb-4 brightness-0 invert"
+              />
+            </Link>
             <p className="text-card/70 mb-6">
               A plataforma completa para gestão de aluguéis. Simplifique seu negócio de locação.
             </p>

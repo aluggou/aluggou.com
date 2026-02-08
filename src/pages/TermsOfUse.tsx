@@ -65,9 +65,9 @@ const TermsOfUse = () => {
                         </section>
 
                         <section className="space-y-4">
-                            <h2 className="text-xl font-semibold text-foreground">5. Período de Teste (Trial)</h2>
+                            <h2 className="text-xl font-semibold text-foreground">5. Período de Teste Grátis</h2>
                             <p>
-                                Oferecemos um período de teste gratuito de 14 dias. Durante o trial, você terá
+                                Oferecemos um período de teste gratuito de 14 dias. Durante o teste grátis, você terá
                                 acesso às funcionalidades do plano escolhido. Ao final do período, caso não
                                 cancele, a cobrança será iniciada automaticamente.
                             </p>

@@ -23,7 +23,7 @@ const FinalCTA = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const validation = leadSchema.safeParse(formData);
     if (!validation.success) {
       toast({
@@ -35,13 +35,13 @@ const FinalCTA = () => {
     }
 
     setIsLoading(true);
-    
+
     try {
       const { error } = await supabase.from("leads").insert({
         name: formData.name.trim(),
         email: formData.email.trim(),
         company: formData.company.trim() || null,
-        plan_interest: "trial",
+        plan_interest: "teste_gratis",
         source: "website_cta",
       });
 

@@ -23,24 +23,28 @@ const Hero = () => {
             <span className="inline-block bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm mb-6">
               Gestão de Aluguéis Simplificada
             </span>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
               Controle total dos seus{" "}
               <span className="text-primary">aluguéis</span> em um só lugar
             </h1>
-            
+
             <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-              Simplifique a gestão da sua empresa de locação com pedidos, contratos, 
+              Simplifique a gestão da sua empresa de locação com pedidos, contratos,
               entregas e faturamento em uma única plataforma fácil de usar.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button variant="cta" size="xl" className="group">
-                Testar Grátis
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <Button variant="default" size="xl" className="group" asChild>
+                <a href="https://app.aluggou.com/signup?source=site" target="_blank" rel="noopener noreferrer">
+                  Testar Grátis
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
-              <Button variant="outline" size="xl">
-                Ver Planos
+              <Button variant="outline" size="xl" asChild>
+                <a href="#planos">
+                  Ver Planos
+                </a>
               </Button>
             </div>
 
@@ -70,7 +74,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Dashboard placeholder */}
               <div className="p-6 bg-background min-h-[400px]">
                 <div className="grid grid-cols-3 gap-4 mb-6">
@@ -86,7 +90,7 @@ const Hero = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="bg-card rounded-lg border border-border p-4">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="font-semibold text-foreground">Últimos Pedidos</h4>
@@ -110,7 +114,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 bg-card rounded-xl shadow-lg p-4 border border-border animate-float">
               <div className="flex items-center gap-3">

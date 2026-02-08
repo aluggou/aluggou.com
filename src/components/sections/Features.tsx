@@ -72,7 +72,7 @@ const Features = () => {
     <section id="funcionalidades" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <span className="inline-block bg-secondary/10 text-secondary font-medium px-4 py-2 rounded-full text-sm mb-4">
+          <span className="inline-block bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm mb-4">
             Funcionalidades
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -90,10 +90,12 @@ const Features = () => {
               className="group bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <feature.icon className="text-primary" size={24} />
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <feature.icon className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}

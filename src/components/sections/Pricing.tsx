@@ -38,7 +38,6 @@ const Pricing = () => {
         { text: "Contratos + Assinatura digital", included: false },
         { text: "Controle financeiro", included: false },
         { text: "Catálogo digital para clientes", included: false },
-        { text: "Relatórios avançados", included: false },
       ],
     },
     {
@@ -51,7 +50,6 @@ const Pricing = () => {
       features: [
         { text: "Até 80 itens", included: true },
         { text: "Até 80 pedidos/mês", included: true },
-        { text: "Até 80 contratos", included: true },
         { text: "Até 13 usuários", included: true },
         { text: "Logística de entrega e retirada", included: true },
         { text: "Contratos + Assinatura digital", included: true },
@@ -69,7 +67,6 @@ const Pricing = () => {
       features: [
         { text: "Itens ilimitados", included: true },
         { text: "Pedidos ilimitados", included: true },
-        { text: "Contratos ilimitados", included: true },
         { text: "Usuários ilimitados", included: true },
         { text: "Logística de entrega e retirada", included: true },
         { text: "Contratos + Assinatura digital", included: true },
@@ -83,6 +80,13 @@ const Pricing = () => {
     return billingCycle === "mensal" ? plan.monthlyPrice : plan.annualPrice;
   };
 
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
   const getDiscount = (plan: Plan) => {
     const discount = Math.round(
       ((plan.monthlyPrice - plan.annualPrice) / plan.monthlyPrice) * 100
@@ -94,7 +98,7 @@ const Pricing = () => {
     return `https://app.aluggou.com/checkout?plano=${planSlug}&ciclo=${billingCycle}`;
   };
 
-  const trialUrl = "https://app.aluggou.com/signup?source=site";
+  const testeGratisUrl = "https://app.aluggou.com/signup?source=site";
 
   return (
     <section id="planos" className="py-20 bg-card">
@@ -107,7 +111,7 @@ const Pricing = () => {
             Escolha o plano ideal para seu negócio
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Comece com trial grátis de 14 dias. Cancele quando quiser.
+            Comece com teste grátis de 14 dias. Cancele quando quiser.
           </p>
 
           {/* Toggle Mensal/Anual */}
@@ -186,12 +190,12 @@ const Pricing = () => {
               </div>
 
               <div className="mb-6">
-                <div className="flex items-baseline gap-1">
+                <div className="flex items-baseline gap-2">
                   <span
                     className={`text-4xl font-bold ${plan.highlight ? "text-primary-foreground" : "text-foreground"
                       }`}
                   >
-                    R$ {getPrice(plan)}
+                    R$ {formatCurrency(getPrice(plan))}
                   </span>
                   <span
                     className={`${plan.highlight
@@ -201,6 +205,11 @@ const Pricing = () => {
                   >
                     /mês
                   </span>
+                  {billingCycle === "anual" && (
+                    <span className="bg-emerald-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                      -{getDiscount(plan)}%
+                    </span>
+                  )}
                 </div>
                 {billingCycle === "anual" && (
                   <div className="mt-1">
@@ -210,10 +219,10 @@ const Pricing = () => {
                         : "text-muted-foreground"
                         }`}
                     >
-                      Cobrado anualmente (R$ {plan.annualPrice * 12}/ano)
-                    </span>
-                    <span className="ml-2 bg-emerald-500/20 text-emerald-600 text-xs font-semibold px-2 py-0.5 rounded-full">
-                      -{getDiscount(plan)}%
+                      Total anual:{" "}
+                      <span className="font-bold">
+                        R$ {formatCurrency(plan.annualPrice * 12)}
+                      </span>
                     </span>
                   </div>
                 )}
@@ -250,8 +259,8 @@ const Pricing = () => {
 
               <div className="space-y-3 mt-auto">
                 <Button
-                  variant={plan.highlight ? "outline-light" : "cta"}
-                  className="w-full"
+                  variant="default"
+                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white border-none"
                   asChild
                 >
                   <a
@@ -260,22 +269,6 @@ const Pricing = () => {
                     rel="noopener noreferrer"
                   >
                     Assinar agora
-                  </a>
-                </Button>
-                <Button
-                  variant={plan.highlight ? "ghost" : "outline"}
-                  className={`w-full ${plan.highlight
-                    ? "text-primary-foreground hover:bg-primary-foreground/10"
-                    : ""
-                    }`}
-                  asChild
-                >
-                  <a
-                    href={trialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Começar trial grátis
                   </a>
                 </Button>
               </div>
